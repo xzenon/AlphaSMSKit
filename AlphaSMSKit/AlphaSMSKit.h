@@ -1,8 +1,8 @@
 //
 //  AppDelegate.h
-//  AlphaSMSKit
+//  AlphaSMSKitExample
 //
-//  Created by Admin on 10/10/13.
+//  Created by Xenon on 10/10/13.
 //
 //
 
