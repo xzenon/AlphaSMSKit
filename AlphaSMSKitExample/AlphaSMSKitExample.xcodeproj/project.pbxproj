@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		848F8BA6180863DA0053FFF2 /* AlphaSMSMessageStatusRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 848F8BA5180863DA0053FFF2 /* AlphaSMSMessageStatusRequest.m */; };
 		84E483CD1806EC8C00020E1E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E483CC1806EC8C00020E1E /* Foundation.framework */; };
 		84E483CF1806EC8C00020E1E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E483CE1806EC8C00020E1E /* CoreGraphics.framework */; };
 		84E483D11806EC8C00020E1E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E483D01806EC8C00020E1E /* UIKit.framework */; };
@@ -26,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		848F8BA4180863DA0053FFF2 /* AlphaSMSMessageStatusRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlphaSMSMessageStatusRequest.h; sourceTree = "<group>"; };
+		848F8BA5180863DA0053FFF2 /* AlphaSMSMessageStatusRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlphaSMSMessageStatusRequest.m; sourceTree = "<group>"; };
 		84E483C91806EC8C00020E1E /* AlphaSMSKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlphaSMSKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84E483CC1806EC8C00020E1E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		84E483CE1806EC8C00020E1E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -139,6 +142,8 @@
 				84E4840F18070C7D00020E1E /* AlphaSMSMessage.m */,
 				84E4841718071FDC00020E1E /* AlphaSMSMessageStatus.h */,
 				84E4841818071FDC00020E1E /* AlphaSMSMessageStatus.m */,
+				848F8BA4180863DA0053FFF2 /* AlphaSMSMessageStatusRequest.h */,
+				848F8BA5180863DA0053FFF2 /* AlphaSMSMessageStatusRequest.m */,
 			);
 			name = AlphaSMSKit;
 			path = ../../AlphaSMSKit;
@@ -244,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				848F8BA6180863DA0053FFF2 /* AlphaSMSMessageStatusRequest.m in Sources */,
 				84E4841018070C7D00020E1E /* AlphaSMSMessage.m in Sources */,
 				84E483E61806EC8C00020E1E /* ViewController.m in Sources */,
 				84E4840D1806EE0400020E1E /* AlphaSMSKit.m in Sources */,

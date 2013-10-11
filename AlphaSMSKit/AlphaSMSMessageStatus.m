@@ -8,35 +8,44 @@
 
 #import "AlphaSMSMessageStatus.h"
 
+@interface AlphaSMSMessageStatus()
+
+@property (nonatomic, readwrite) AlphaSMSMessageStatusCode statusCode; // message status code
+@property (nonatomic, strong, readwrite) NSNumber *messageId;          // message identifier (set manually by user when sending message)
+@property (nonatomic, strong, readwrite) NSNumber *gatewayMessageId;   // message identifier (set by SMS gateway automatically)
+@property (nonatomic, strong, readwrite) NSNumber *smsCount;           // actual SMS parts to be sent
+@property (nonatomic, strong, readwrite) NSDate *completionDate;       // date when message final status was set
+@property (nonatomic, readwrite) BOOL isError;                         // YES when message status code is one of 20X error codes
+
+@end
+
 @implementation AlphaSMSMessageStatus
 
 // setup message status instance
-- (AlphaSMSMessageStatus *)initMessageStatusWithCode:(AlphaSMSMessageStatusCode)statusCode
-                                           messageId:(NSNumber *)messageId
-                                    gatewayMessageId:(NSNumber *)gatewayMessageId
-                                            smsCount:(NSNumber *)smsCount
-                                      completionDate:(NSDate *)completionDate
++ (AlphaSMSMessageStatus *)messageStatusWithCode:(AlphaSMSMessageStatusCode)statusCode
+                                       messageId:(NSNumber *)messageId
+                                gatewayMessageId:(NSNumber *)gatewayMessageId
+                                        smsCount:(NSNumber *)smsCount
+                                  completionDate:(NSDate *)completionDate
 {
-    self = [super init];
-    if (self) {
-        _statusCode = statusCode;
-        _messageId = messageId;
-        _gatewayMessageId = gatewayMessageId;
-        _smsCount = smsCount;
-        _completionDate = completionDate;        
-        _isError = (_statusCode == AlphaSMSMessageStatusErrorUnknown ||
-                    _statusCode == AlphaSMSMessageStatusErrorID ||
-                    _statusCode == AlphaSMSMessageStatusErrorSender ||
-                    _statusCode == AlphaSMSMessageStatusErrorRecipient ||
-                    _statusCode == AlphaSMSMessageStatusErrorLength ||
-                    _statusCode == AlphaSMSMessageStatusErrorUserDisable ||
-                    _statusCode == AlphaSMSMessageStatusErrorBilling ||
-                    _statusCode == AlphaSMSMessageStatusErrorOverlimit ||
-                    _statusCode == AlphaSMSMessageStatusErrorDuplicate ||
-                    _statusCode == AlphaSMSMessageStatusErrorDelete ||
-                    _statusCode == AlphaSMSMessageStatusErrorThrottle);
-    }
-    return self;
+    AlphaSMSMessageStatus *messageStatus = [[AlphaSMSMessageStatus alloc] init];
+    messageStatus.statusCode = statusCode;
+    messageStatus.messageId = messageId;
+    messageStatus.gatewayMessageId = gatewayMessageId;
+    messageStatus.smsCount = smsCount;
+    messageStatus.completionDate = completionDate;
+    messageStatus.isError = (messageStatus.statusCode == AlphaSMSMessageStatusErrorUnknown ||
+                             messageStatus.statusCode == AlphaSMSMessageStatusErrorID ||
+                             messageStatus.statusCode == AlphaSMSMessageStatusErrorSender ||
+                             messageStatus.statusCode == AlphaSMSMessageStatusErrorRecipient ||
+                             messageStatus.statusCode == AlphaSMSMessageStatusErrorLength ||
+                             messageStatus.statusCode == AlphaSMSMessageStatusErrorUserDisable ||
+                             messageStatus.statusCode == AlphaSMSMessageStatusErrorBilling ||
+                             messageStatus.statusCode == AlphaSMSMessageStatusErrorOverlimit ||
+                             messageStatus.statusCode == AlphaSMSMessageStatusErrorDuplicate ||
+                             messageStatus.statusCode == AlphaSMSMessageStatusErrorDelete ||
+                             messageStatus.statusCode == AlphaSMSMessageStatusErrorThrottle);
+    return messageStatus;
 }
 
 + (AlphaSMSMessageStatusCode)statusCodeFromInteger:(NSInteger)intCode

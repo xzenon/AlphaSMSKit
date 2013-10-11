@@ -52,11 +52,11 @@ typedef NS_ENUM(NSUInteger, AlphaSMSMessageStatusCode)
 @property (nonatomic, readonly) BOOL isError;                         // YES when message status code is one of 20X error codes
 
 // setup message status instance
-- (AlphaSMSMessageStatus *)initMessageStatusWithCode:(AlphaSMSMessageStatusCode)statusCode
-                                           messageId:(NSNumber *)messageId
-                                    gatewayMessageId:(NSNumber *)gatewayMessageId
-                                            smsCount:(NSNumber *)smsCount
-                                      completionDate:(NSDate *)completionDate;
++ (AlphaSMSMessageStatus *)messageStatusWithCode:(AlphaSMSMessageStatusCode)statusCode
+                                       messageId:(NSNumber *)messageId
+                                gatewayMessageId:(NSNumber *)gatewayMessageId
+                                        smsCount:(NSNumber *)smsCount
+                                  completionDate:(NSDate *)completionDate;
 
 + (AlphaSMSMessageStatusCode)statusCodeFromInteger:(NSInteger)intCode;
 

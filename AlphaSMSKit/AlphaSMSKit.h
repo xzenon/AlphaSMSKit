@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "AlphaSMSMessage.h"
+#import "AlphaSMSMessageStatus.h"
+#import "AlphaSMSMessageStatusRequest.h"
+
 typedef NS_ENUM(NSUInteger, AlphaSMSServiceError)
 {
     AlphaSMSServiceErrorInvalid       =   0,    // INVALID ERROR CODE
@@ -25,8 +29,16 @@ typedef NS_ENUM(NSUInteger, AlphaSMSServiceError)
 
 + (AlphaSMSServiceError)errorCodeFromInteger:(NSInteger)intCode;
 
+// attempt to send messages
+// (NSArray *)messages: array of AlphaSMSMessage objects
 - (void)sendMessages:(NSArray *)messages
              success:(void (^)(NSArray *messageStatuses))success
              failure:(void (^)(NSError *error))failure;
+
+// attempt to get message statuses
+// (NSArray *)messageRequests: array of AlphaSMSMessageStatusRequest objects
+- (void)getMessageStatuses:(NSArray *)messageRequests
+                   success:(void (^)(NSArray *messageStatuses))success
+                   failure:(void (^)(NSError *error))failure;
 
 @end

@@ -8,8 +8,6 @@
 
 #import "ViewController.h"
 #import "AlphaSMSKit.h"
-#import "AlphaSMSMessage.h"
-#import "AlphaSMSMessageStatus.h"
 
 @interface ViewController ()
 
@@ -31,17 +29,35 @@
     
     AlphaSMSKit *alphaSmsKit = [[AlphaSMSKit alloc] init];
     
-    AlphaSMSMessage *message1 = [AlphaSMSMessage messageWithText:@"some text message" type:AlphaSMSMessageTypeSMS recipient:@"38066..." sender:@"TESTER"];
-    AlphaSMSMessage *message2 = [AlphaSMSMessage messageWithText:@"some text message" type:AlphaSMSMessageTypeSMS recipient:@"38066..." sender:@"TESTER"];
+    AlphaSMSMessage *message1 = [AlphaSMSMessage messageWithText:@"some text message 1" type:AlphaSMSMessageTypeSMS recipient:@"38066..." sender:@"TESTER"];
+    message1.scheduleDate = [NSDate date];
+    message1.expirationDate = [NSDate dateWithTimeIntervalSinceNow:3600];
     
-    [alphaSmsKit sendMessages:@[message1,message2] success:^(NSArray *messageStatuses) {
+    //AlphaSMSMessage *message2 = [AlphaSMSMessage messageWithText:@"some text message 2" type:AlphaSMSMessageTypeSMS recipient:@"01234567890123456789012345" sender:@"TESTERTER12344"];
+//    AlphaSMSMessage *message2 = [AlphaSMSMessage wapMessageWithText:@""
+//                                                             wapURL:@"http://ex.ua"
+//                                                          recipient:@"+38066..."
+//                                                             sender:@"SEND"
+//                                                       scheduleDate:[NSDate date]
+//                                                     expirationDate:[NSDate dateWithTimeIntervalSinceNow:3600] ];
+    
+    [alphaSmsKit sendMessages:@[message1] success:^(NSArray *messageStatuses) {
         
-        NSLog(@"*** MESSAGE %d STATUSES: %@", [messageStatuses count], messageStatuses);
+        NSLog(@"*** MESSAGE STATUSES(%d) AFTER SENDING : %@", [messageStatuses count], messageStatuses);
+        
+        AlphaSMSMessageStatus *status = [messageStatuses objectAtIndex:0];
+        AlphaSMSMessageStatusRequest *statusRequest = [AlphaSMSMessageStatusRequest messageStatusRequestWithGatewayMessageId:status.gatewayMessageId];
+        
+        [alphaSmsKit getMessageStatuses:@[statusRequest] success:^(NSArray *messageStatuses) {
+            
+            NSLog(@"*** GET MESSAGE STATUSES(%d) : %@", [messageStatuses count], messageStatuses);
+            
+        } failure:^(NSError *error) {
+            NSLog(@"*** ERROR: %@", error);
+        }];
         
     } failure:^(NSError *error) {
-        
         NSLog(@"*** ERROR: %@", error);
-        
     }];
 }
 
