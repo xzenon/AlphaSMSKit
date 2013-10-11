@@ -18,6 +18,10 @@
 		84E483E61806EC8C00020E1E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E483E51806EC8C00020E1E /* ViewController.m */; };
 		84E483E81806EC8C00020E1E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84E483E71806EC8C00020E1E /* Images.xcassets */; };
 		84E4840D1806EE0400020E1E /* AlphaSMSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4840C1806EE0400020E1E /* AlphaSMSKit.m */; };
+		84E4841018070C7D00020E1E /* AlphaSMSMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4840F18070C7D00020E1E /* AlphaSMSMessage.m */; };
+		84E4841918071FDC00020E1E /* AlphaSMSMessageStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4841818071FDC00020E1E /* AlphaSMSMessageStatus.m */; };
+		84E4841B1807317200020E1E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E4841A1807317200020E1E /* MobileCoreServices.framework */; };
+		84E4841D1807318100020E1E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E4841C1807318100020E1E /* SystemConfiguration.framework */; };
 		ABB6FA82DD7245BEA1C5CEB6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C18B3466DC0648B4B8CB6F1B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +44,12 @@
 		84E483EE1806EC8C00020E1E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		84E4840B1806EE0400020E1E /* AlphaSMSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlphaSMSKit.h; sourceTree = "<group>"; };
 		84E4840C1806EE0400020E1E /* AlphaSMSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlphaSMSKit.m; sourceTree = "<group>"; };
+		84E4840E18070C7D00020E1E /* AlphaSMSMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlphaSMSMessage.h; sourceTree = "<group>"; };
+		84E4840F18070C7D00020E1E /* AlphaSMSMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlphaSMSMessage.m; sourceTree = "<group>"; };
+		84E4841718071FDC00020E1E /* AlphaSMSMessageStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlphaSMSMessageStatus.h; sourceTree = "<group>"; };
+		84E4841818071FDC00020E1E /* AlphaSMSMessageStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlphaSMSMessageStatus.m; sourceTree = "<group>"; };
+		84E4841A1807317200020E1E /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		84E4841C1807318100020E1E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C18B3466DC0648B4B8CB6F1B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED3A664EF1904727B705C6F0 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -49,6 +59,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84E4841D1807318100020E1E /* SystemConfiguration.framework in Frameworks */,
+				84E4841B1807317200020E1E /* MobileCoreServices.framework in Frameworks */,
 				84E483CF1806EC8C00020E1E /* CoreGraphics.framework in Frameworks */,
 				84E483D11806EC8C00020E1E /* UIKit.framework in Frameworks */,
 				84E483CD1806EC8C00020E1E /* Foundation.framework in Frameworks */,
@@ -80,6 +92,8 @@
 		84E483CB1806EC8C00020E1E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84E4841C1807318100020E1E /* SystemConfiguration.framework */,
+				84E4841A1807317200020E1E /* MobileCoreServices.framework */,
 				84E483CC1806EC8C00020E1E /* Foundation.framework */,
 				84E483CE1806EC8C00020E1E /* CoreGraphics.framework */,
 				84E483D01806EC8C00020E1E /* UIKit.framework */,
@@ -121,6 +135,10 @@
 			children = (
 				84E4840B1806EE0400020E1E /* AlphaSMSKit.h */,
 				84E4840C1806EE0400020E1E /* AlphaSMSKit.m */,
+				84E4840E18070C7D00020E1E /* AlphaSMSMessage.h */,
+				84E4840F18070C7D00020E1E /* AlphaSMSMessage.m */,
+				84E4841718071FDC00020E1E /* AlphaSMSMessageStatus.h */,
+				84E4841818071FDC00020E1E /* AlphaSMSMessageStatus.m */,
 			);
 			name = AlphaSMSKit;
 			path = ../../AlphaSMSKit;
@@ -226,9 +244,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84E4841018070C7D00020E1E /* AlphaSMSMessage.m in Sources */,
 				84E483E61806EC8C00020E1E /* ViewController.m in Sources */,
 				84E4840D1806EE0400020E1E /* AlphaSMSKit.m in Sources */,
 				84E483DD1806EC8C00020E1E /* AppDelegate.m in Sources */,
+				84E4841918071FDC00020E1E /* AlphaSMSMessageStatus.m in Sources */,
 				84E483D91806EC8C00020E1E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
