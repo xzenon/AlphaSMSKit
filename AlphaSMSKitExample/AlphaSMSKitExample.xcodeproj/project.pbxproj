@@ -14,10 +14,7 @@
 		84E483D71806EC8C00020E1E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84E483D51806EC8C00020E1E /* InfoPlist.strings */; };
 		84E483D91806EC8C00020E1E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E483D81806EC8C00020E1E /* main.m */; };
 		84E483DD1806EC8C00020E1E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E483DC1806EC8C00020E1E /* AppDelegate.m */; };
-		84E483E01806EC8C00020E1E /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84E483DE1806EC8C00020E1E /* Main_iPhone.storyboard */; };
-		84E483E31806EC8C00020E1E /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84E483E11806EC8C00020E1E /* Main_iPad.storyboard */; };
 		84E483E61806EC8C00020E1E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E483E51806EC8C00020E1E /* ViewController.m */; };
-		84E483E81806EC8C00020E1E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84E483E71806EC8C00020E1E /* Images.xcassets */; };
 		84E4840D1806EE0400020E1E /* AlphaSMSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4840C1806EE0400020E1E /* AlphaSMSKit.m */; };
 		84E4841018070C7D00020E1E /* AlphaSMSMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4840F18070C7D00020E1E /* AlphaSMSMessage.m */; };
 		84E4841918071FDC00020E1E /* AlphaSMSMessageStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4841818071FDC00020E1E /* AlphaSMSMessageStatus.m */; };
@@ -39,11 +36,8 @@
 		84E483DA1806EC8C00020E1E /* AlphaSMSKitExample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AlphaSMSKitExample-Prefix.pch"; sourceTree = "<group>"; };
 		84E483DB1806EC8C00020E1E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		84E483DC1806EC8C00020E1E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		84E483DF1806EC8C00020E1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		84E483E21806EC8C00020E1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		84E483E41806EC8C00020E1E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		84E483E51806EC8C00020E1E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		84E483E71806EC8C00020E1E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		84E483EE1806EC8C00020E1E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		84E4840B1806EE0400020E1E /* AlphaSMSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlphaSMSKit.h; sourceTree = "<group>"; };
 		84E4840C1806EE0400020E1E /* AlphaSMSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlphaSMSKit.m; sourceTree = "<group>"; };
@@ -112,11 +106,8 @@
 				84E4840A1806EE0400020E1E /* AlphaSMSKit */,
 				84E483DB1806EC8C00020E1E /* AppDelegate.h */,
 				84E483DC1806EC8C00020E1E /* AppDelegate.m */,
-				84E483DE1806EC8C00020E1E /* Main_iPhone.storyboard */,
-				84E483E11806EC8C00020E1E /* Main_iPad.storyboard */,
 				84E483E41806EC8C00020E1E /* ViewController.h */,
 				84E483E51806EC8C00020E1E /* ViewController.m */,
-				84E483E71806EC8C00020E1E /* Images.xcassets */,
 				84E483D31806EC8C00020E1E /* Supporting Files */,
 			);
 			path = AlphaSMSKitExample;
@@ -202,9 +193,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84E483E31806EC8C00020E1E /* Main_iPad.storyboard in Resources */,
-				84E483E81806EC8C00020E1E /* Images.xcassets in Resources */,
-				84E483E01806EC8C00020E1E /* Main_iPhone.storyboard in Resources */,
 				84E483D71806EC8C00020E1E /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,22 +258,6 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		84E483DE1806EC8C00020E1E /* Main_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				84E483DF1806EC8C00020E1E /* Base */,
-			);
-			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		84E483E11806EC8C00020E1E /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				84E483E21806EC8C00020E1E /* Base */,
-			);
-			name = Main_iPad.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -322,7 +294,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -356,7 +328,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

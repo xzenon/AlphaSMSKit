@@ -31,14 +31,24 @@ typedef NS_ENUM(NSUInteger, AlphaSMSServiceError)
 
 // attempt to send messages
 // (NSArray *)messages: array of AlphaSMSMessage objects
-- (void)sendMessages:(NSArray *)messages
++ (void)sendMessages:(NSArray *)messages
              success:(void (^)(NSArray *messageStatuses))success
              failure:(void (^)(NSError *error))failure;
 
 // attempt to get message statuses
 // (NSArray *)messageRequests: array of AlphaSMSMessageStatusRequest objects
-- (void)getMessageStatuses:(NSArray *)messageRequests
++ (void)getMessageStatuses:(NSArray *)messageRequests
                    success:(void (^)(NSArray *messageStatuses))success
                    failure:(void (^)(NSError *error))failure;
+
+// attempt to delete messages (if they are not yet sent to operator)
+// (NSArray *)messageRequests: array of AlphaSMSMessageStatusRequest objects
++ (void)deleteMessages:(NSArray *)messageRequests
+               success:(void (^)(NSArray *messageStatuses))success
+               failure:(void (^)(NSError *error))failure;
+
+// get user balance
++ (void)getBalanceWithSuccess:(void (^)(NSNumber *amount, NSString *currency))success
+                      failure:(void (^)(NSError *error))failure;
 
 @end
