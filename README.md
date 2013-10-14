@@ -277,6 +277,8 @@ To get the current available amount on your balance use the following method:
 
 For demo and more details please check the included **AlphaSMSKitExample** example project.
 
+![Demo project](http://habrastorage.org/storage3/cb5/5d3/ee9/cb55d3ee92439be4f99c0f3d9ec78bd9.png)
+
 ## License
 
 AlphaSMSKit is available under the MIT license. See the LICENSE file for more info.
