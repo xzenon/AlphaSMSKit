@@ -159,10 +159,10 @@ static NSNumber *messageGatewayId;
 
 - (void)deleteMessage
 {
-    //use previously saved message ID to setup message status request
+    //use previously saved message ID to setup delete request
     AlphaSMSMessageStatusRequest *statusRequest = [AlphaSMSMessageStatusRequest messageStatusRequestWithGatewayMessageId:messageGatewayId];
     
-    //get message status
+    //delete it
     [AlphaSMSKit deleteMessages:@[statusRequest]
                         success:^(NSArray *messageStatuses) {
                                 
