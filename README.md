@@ -65,18 +65,31 @@ AlphaSMSKit uses the such  helper classes for manipulating messages, statuses an
 `AlphaSMSMessage` class generally describes SMS message using the following structure:
 
 ```objective-c
-@property (nonatomic) AlphaSMSMessageType type;         // message type
-@property (nonatomic, strong) NSNumber *messageId;      // some message unique identifier (optional, if set 
-                                                        // by user - user must guarantee the id is unique 
-                                                        // for user's account scope)
-@property (nonatomic, strong) NSString *recipient;      // recipient phone number, can include "+" 
-                                                        // (max length: 21 symbols)
-@property (nonatomic, strong) NSString *sender;         // sender signature (max length: 11 symbols)
-@property (nonatomic, strong) NSString *text;           // message text
-@property (nonatomic, strong) NSDate *scheduleDate;     // date when message needs to be sent (optional)
-@property (nonatomic, strong) NSDate *expirationDate;   // date of message expiration (if was scheduled) 
-                                                        // (min: 1 minute, max: 5 days from being sent, default: 1 day)
-@property (nonatomic, strong) NSString *wapURL;         // URL link for wap-push messages
+// message type
+@property (nonatomic) AlphaSMSMessageType type;
+
+// some message unique identifier (optional, if set by user - user must 
+// guarantee the id is unique for user's account scope)
+@property (nonatomic, strong) NSNumber *messageId;
+
+// recipient phone number, can include "+" (max length: 21 symbols)
+@property (nonatomic, strong) NSString *recipient;
+
+// sender signature (max length: 11 symbols)
+@property (nonatomic, strong) NSString *sender;
+
+// message text
+@property (nonatomic, strong) NSString *text;
+
+// date when message needs to be sent (optional)
+@property (nonatomic, strong) NSDate *scheduleDate;
+
+// date of message expiration (if was scheduled)
+// (min: 1 minute, max: 5 days from being sent, default: 1 day)
+@property (nonatomic, strong) NSDate *expirationDate;
+
+// URL link for wap-push messages
+@property (nonatomic, strong) NSString *wapURL;
 ```
 
 To create different types of messages use `AlphaSMSMessageType` values:
@@ -126,15 +139,23 @@ To quickly configure `AlphaSMSMessage` use one of the following helper methods:
 `AlphaSMSMessageStatus` class describes message status received after calling send/delete/status methods. It has the following structure:
 
 ```objective-c
-@property (nonatomic, readonly) AlphaSMSMessageStatusCode statusCode; // message status code
-@property (nonatomic, strong, readonly) NSNumber *messageId;          // message identifier (set manually 
-                                                                      // by user when sending message)
-@property (nonatomic, strong, readonly) NSNumber *gatewayMessageId;   // message identifier (set by SMS 
-                                                                      // gateway automatically)
-@property (nonatomic, strong, readonly) NSNumber *smsCount;           // actual SMS parts to be sent
-@property (nonatomic, strong, readonly) NSDate *completionDate;       // date when message final status was set
-@property (nonatomic, readonly) BOOL isError;                         // YES when message status code is one 
-                                                                      // of 20X error codes
+// message status code
+@property (nonatomic, readonly) AlphaSMSMessageStatusCode statusCode;
+
+// message identifier (set manually by user when sending message)
+@property (nonatomic, strong, readonly) NSNumber *messageId;
+
+// message identifier (set by SMS gateway automatically)
+@property (nonatomic, strong, readonly) NSNumber *gatewayMessageId;
+
+// actual SMS parts to be sent
+@property (nonatomic, strong, readonly) NSNumber *smsCount;
+
+// date when message final status was set
+@property (nonatomic, strong, readonly) NSDate *completionDate;
+
+// YES when message status code is one of 20X error codes
+@property (nonatomic, readonly) BOOL isError;
 ```
 
 `AlphaSMSMessageStatusCode` is used to determine current message status or error type (look to the PDF docs or source code to find more descriptions for status code values).
@@ -144,10 +165,11 @@ To quickly configure `AlphaSMSMessage` use one of the following helper methods:
 `AlphaSMSMessageStatusRequest` is used to pass to API the information about messages which statuses we want to receive. Structure:
 
 ```objective-c
-@property (nonatomic, strong, readonly) NSNumber *messageId;          // message identifier (one that set 
-                                                                      // manually by user when sending message)
-@property (nonatomic, strong, readonly) NSNumber *gatewayMessageId;   // message identifier (one that set 
-                                                                      // by SMS gateway automatically)
+// message identifier (one that set manually by user when sending message)
+@property (nonatomic, strong, readonly) NSNumber *messageId;          
+
+// message identifier (one that set by SMS gateway automatically)
+@property (nonatomic, strong, readonly) NSNumber *gatewayMessageId;
 ```
 
 To quickly configure `AlphaSMSMessageStatusRequest` use one of the following helper methods:
@@ -171,6 +193,7 @@ To send SMS message (you can send one or more per one call) use the following me
 ```
 
 `(NSArray *)messages` is an array containing one or more instances of `AlphaSMSMessage`.
+
 Resulting `(NSArray *)messageStatuses` is an array containing one or more instances of `AlphaSMSMessageStatus`.
 
 Example code for sending standard SMS message:
@@ -198,6 +221,7 @@ To delete message (one or more per call) use the following method:
 ```
 
 `(NSArray *)messageRequests` is an array containing one or more instances of `AlphaSMSMessageStatusRequest`.
+
 Resulting `(NSArray *)messageStatuses` is an array containing one or more instances of `AlphaSMSMessageStatus`.
 
 Example code for sending standard SMS message:
@@ -223,6 +247,7 @@ To determine current message status (one or more per call) use the following met
 ```
 
 `(NSArray *)messageRequests` is an array containing one or more instances of `AlphaSMSMessageStatusRequest`.
+
 Resulting `(NSArray *)messageStatuses` is an array containing one or more instances of `AlphaSMSMessageStatus`.
 
 Example code for sending standard SMS message:
