@@ -226,8 +226,8 @@ Resulting `(NSArray *)messageStatuses` is an array containing one or more instan
 
 Example code for sending standard SMS message:
 ```objective-c
-//use previously saved message ID to setup message status request
-AlphaSMSMessageStatusRequest *statusRequest = [AlphaSMSMessageStatusRequest messageStatusRequestWithGatewayMessageId:messageGatewayId];
+//use previously saved message ID (for example, "112233") to setup message status request
+AlphaSMSMessageStatusRequest *statusRequest = [AlphaSMSMessageStatusRequest messageStatusRequestWithGatewayMessageId:@[112233]];
     
 //delete message and get it's status
 [AlphaSMSKit deleteMessages:@[statusRequest] success:^(NSArray *messageStatuses) {
@@ -252,8 +252,8 @@ Resulting `(NSArray *)messageStatuses` is an array containing one or more instan
 
 Example code for sending standard SMS message:
 ```objective-c
-//use previously saved message ID to setup message status request
-AlphaSMSMessageStatusRequest *statusRequest = [AlphaSMSMessageStatusRequest messageStatusRequestWithGatewayMessageId:messageGatewayId];
+//use previously saved message ID (for example, "112233") to setup message status request
+AlphaSMSMessageStatusRequest *statusRequest = [AlphaSMSMessageStatusRequest messageStatusRequestWithGatewayMessageId:@[112233]];
     
 //get message status
 [AlphaSMSKit getMessageStatuses:@[statusRequest] success:^(NSArray *messageStatuses) {
