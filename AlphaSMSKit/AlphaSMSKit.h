@@ -51,4 +51,11 @@ typedef NS_ENUM(NSUInteger, AlphaSMSServiceError)
 + (void)getBalanceWithSuccess:(void (^)(NSNumber *amount, NSString *currency))success
                       failure:(void (^)(NSError *error))failure;
 
+// get price for sending given phone numbers
+// (NSArray *)numbers - array of phone numbers (strings) to get prices for
+// on success: (NSArray *)prices - array of NSDictionary objects with corresponding keys "price", "currency", "phone"
++ (void)getPriceForNumbers:(NSArray *)numbers
+                   success:(void (^)(NSArray *prices))success
+                   failure:(void (^)(NSError *error))failure;
+
 @end

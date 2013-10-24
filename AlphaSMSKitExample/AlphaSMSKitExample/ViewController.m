@@ -15,6 +15,7 @@ static NSNumber *messageGatewayId;
 @interface ViewController()
 
 @property (nonatomic, strong) UIButton *balanceButton;
+@property (nonatomic, strong) UIButton *priceButton;
 @property (nonatomic, strong) UIButton *sendButton;
 @property (nonatomic, strong) UIButton *statusButton;
 @property (nonatomic, strong) UIButton *deleteButton;
@@ -33,7 +34,7 @@ static NSNumber *messageGatewayId;
     [AlphaSMSKit setSecretKey:@"SECRET_KEY"];
     
     //set some phone number for tests
-    phoneNumber = @"+38050....";
+    phoneNumber = @"+38050...";
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -49,9 +50,18 @@ static NSNumber *messageGatewayId;
     [self.balanceButton addTarget:self action:@selector(checkBalance) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.balanceButton];
     
+    //add "get price" button
+    self.priceButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.priceButton.frame = CGRectMake(10, 170, self.view.frame.size.width - 20, 40);
+    self.priceButton.backgroundColor = [UIColor lightGrayColor];
+    [self.priceButton setTintColor:[UIColor blackColor]];
+    [self.priceButton setTitle:@"Get price" forState:UIControlStateNormal];
+    [self.priceButton addTarget:self action:@selector(checkPrice) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.priceButton];
+    
     //add "send" button
     self.sendButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    self.sendButton.frame = CGRectMake(10, 170, self.view.frame.size.width - 20, 40);
+    self.sendButton.frame = CGRectMake(10, 240, self.view.frame.size.width - 20, 40);
     self.sendButton.backgroundColor = [UIColor lightGrayColor];
     [self.sendButton setTintColor:[UIColor blackColor]];
     [self.sendButton setTitle:[@"Send SMS to " stringByAppendingString:phoneNumber] forState:UIControlStateNormal];
@@ -60,7 +70,7 @@ static NSNumber *messageGatewayId;
     
     //add "status" button
     self.statusButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    self.statusButton.frame = CGRectMake(10, 240, self.view.frame.size.width - 20, 40);
+    self.statusButton.frame = CGRectMake(10, 310, self.view.frame.size.width - 20, 40);
     self.statusButton.backgroundColor = [UIColor lightGrayColor];
     [self.statusButton setTintColor:[UIColor blackColor]];
     [self.statusButton setTitle:@"Get message status" forState:UIControlStateNormal];
@@ -70,7 +80,7 @@ static NSNumber *messageGatewayId;
     
     //add "delete" button
     self.deleteButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    self.deleteButton.frame = CGRectMake(10, 310, self.view.frame.size.width - 20, 40);
+    self.deleteButton.frame = CGRectMake(10, 380, self.view.frame.size.width - 20, 40);
     self.deleteButton.backgroundColor = [UIColor lightGrayColor];
     [self.deleteButton setTintColor:[UIColor blackColor]];
     [self.deleteButton setTitle:@"Delete message" forState:UIControlStateNormal];
@@ -187,8 +197,8 @@ static NSNumber *messageGatewayId;
     [AlphaSMSKit getBalanceWithSuccess:^(NSNumber *amount, NSString *currency) {
 
         //got balance info
-        [self showAlertWithTitle:@"Check balance" message:[NSString stringWithFormat:@"Balance amount: %@ (%@)", amount, currency]];
-        NSLog(@"[BALANCE] Amount: %@ (%@)", amount, currency);
+        [self showAlertWithTitle:@"Check balance" message:[NSString stringWithFormat:@"Balance amount: %@ %@", amount, currency]];
+        NSLog(@"[BALANCE] Amount: %@ %@", amount, currency);
         
     } failure:^(NSError *error) {
         
@@ -196,6 +206,28 @@ static NSNumber *messageGatewayId;
         [self showAlertWithTitle:@"Error" message:[NSString stringWithFormat:@"Error: %@", error]];
         NSLog(@"[BALANCE] Error: %@", error);
         
+    }];
+}
+
+- (void)checkPrice
+{
+    //check user balance
+    [AlphaSMSKit getPriceForNumbers:@[phoneNumber] success:^(NSArray *prices) {
+        
+        //got balance info
+        NSString *message = @"";
+        for (NSDictionary *price in prices) {
+            message = [message stringByAppendingString:[NSString stringWithFormat:@"%@ %@ for %@; ", price[@"price"], price[@"currency"], price[@"phone"]]];
+        }
+        
+        [self showAlertWithTitle:@"Get price" message:[NSString stringWithFormat:@"Price response: %@", message]];
+        NSLog(@"[PRICE] Response: %@", prices);
+        
+    } failure:^(NSError *error) {
+        
+        //error
+        [self showAlertWithTitle:@"Error" message:[NSString stringWithFormat:@"Error: %@", error]];
+        NSLog(@"[PRICE] Error: %@", error);
     }];
 }
 

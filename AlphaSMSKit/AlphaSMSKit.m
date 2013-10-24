@@ -171,7 +171,7 @@ static NSString *_secretKey;
         //put prepared message status request to the list
         [preparedMessageRequests addObject:@{@"msg":preparedMessageRequest}];
     }
-    [nodes setObject:preparedMessageRequests forKey:@"delete"];
+    [nodes setObject:preparedMessageRequests forKey:@"prices"];
     
     //call API for getting 'status' results
     [[AlphaSMSKit sharedKit] callAPIAndGetMessageStatusesWithXML:[XML_HEADER_STRING stringByAppendingString:[nodes XMLString]]
@@ -225,6 +225,63 @@ static NSString *_secretKey;
                                         //trigger failure
                                         failure (error);
                                     }];
+}
+
+// get price for sending given phone numbers
+// (NSArray *)numbers - array of phone numbers (strings) to get prices for
+// on success: (NSArray *)prices - array of NSDictionary objects with corresponding keys "price", "currency", "phone"
++ (void)getPriceForNumbers:(NSArray *)numbers
+                   success:(void (^)(NSArray *prices))success
+                   failure:(void (^)(NSError *error))failure
+{
+    //build nodes for request XML
+    //add <package key="[secretKey]"> root node
+    // __name - internal XMLDictionary key for setting XML node name
+    NSMutableDictionary *nodes = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                  @"package", @"__name",
+                                  _secretKey, @"_key", nil];
+    
+    //need to build array of elements ready to be converted to XML with XMLDictionary later
+    NSMutableArray *preparedNumbers = [NSMutableArray array];
+    for (NSString *number in numbers) {
+        //put phone numbers to the list for converting to XML like <phone>NUMBER</phone>
+        [preparedNumbers addObject:@{@"phone":@{@"__text":number}}];
+    }
+    [nodes setObject:preparedNumbers forKey:@"prices"];
+    
+    //call API and then parse response XML into message status objects, checking for errors before
+    [[AlphaSMSKit sharedKit] callAPIWithXML:[XML_HEADER_STRING stringByAppendingString:[nodes XMLString]] success:^(NSDictionary *responseDictionary) {
+        
+        //check for error node
+        if ([responseDictionary valueForKeyPath:@"error"]) {
+            NSString *errorCodeString = [responseDictionary valueForKeyPath:@"error"][0];
+            AlphaSMSServiceError errorCode = [AlphaSMSKit errorCodeFromInteger:[errorCodeString integerValue]];
+            
+            //trigger failure
+            failure ([NSError errorWithDomain:ALPHASMS_ERROR_DOMAIN code:errorCode userInfo:nil]);
+        }
+        
+        //no error node - parse response nodes
+        else {
+            NSArray *pricesPhoneNodes = [responseDictionary valueForKeyPath:@"prices.phone"];
+            
+            NSMutableArray *prices = [NSMutableArray array];
+            for (NSDictionary *pricesPhoneNode in pricesPhoneNodes[0]) {
+                
+                NSNumber *priceAmount = [pricesPhoneNode valueForKey:@"_price"];
+                NSString *priceCurrency = [pricesPhoneNode valueForKey:@"_currency"];
+                NSString *pricePhone = [pricesPhoneNode valueForKey:@"__text"];
+                [prices addObject:@{@"price":priceAmount, @"currency":priceCurrency, @"phone":pricePhone}];
+            }
+            
+            //trigger success block
+            success(prices);
+        }
+        
+    } failure:^(NSError *error) {
+        //trigger failure
+        failure (error);
+    }];
 }
 
 #pragma mark - Internal methods

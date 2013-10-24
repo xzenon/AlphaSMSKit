@@ -18,6 +18,7 @@ If you wish to use AlphaSMSKit in a non-ARC project, just add the **-fobjc-arc**
   * check message status
   * delete scheduled messages
   * check current balance
+  * get price for sending SMS to given phone numbers
 
 ## How to get started
 ### Installation
@@ -272,6 +273,21 @@ To get the current available amount on your balance use the following method:
 ```
 
 `NSNumber *amount` is a available money amount, `NSString *currency` is a string describing used currency.
+
+### Get price for sending SMS to desired phone numbers
+
+To get the actual prices for sending SMS to some phone number(s) use the following method:
+```objective-c
++ (void)getPriceForNumbers:(NSArray *)numbers 
+                   success:(void (^)(NSArray *prices))success 
+                   failure:(void (^)(NSError *error))failure;
+```
+`(NSArray *)numbers` is an array of phone numbers (strings) to get prices for.
+
+On success you'll get `(NSArray *)prices` - array of NSDictionary objects with corresponding keys:
+ * `"price"` for actual price, `(NSNumber *)`
+ * `"currency"` for currency, `(NSString *)`
+ * `"phone"` for phone number price was retrieved for, `(NSString *)`
 
 ### Demo project
 
